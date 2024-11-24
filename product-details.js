@@ -1,12 +1,17 @@
 // Function to fetch product details and update the page
-const params = new URLSearchParams(window.location.search);
-const productId = params.get('id'); // 取得 id，例如 id=1
+
 function setProductDetails(productId) {
 
     fetch('product-details.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP error! Status: ${response.status}');
+            }
+            return response.json(); // Parse JSON data
+        })
         .then(products => {
             const product = products.find(p => p.id === productId);
+            console.log(product);
             if (product) {
                 // Update product details on the page
             
@@ -16,7 +21,7 @@ function setProductDetails(productId) {
                 document.getElementById('productDescription').innerText = product.description;
             }
         })
-        .catch(error => console.error('Error loading product data:', error));
+        //.catch(error => console.error('Error loading product data:', error));
 
 }
 

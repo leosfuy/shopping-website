@@ -9,24 +9,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-------------js for toggle menu-------------->
-<script defer src="product-details.js"></script>
+<script type="text/javascript"  src="product-details.js"></script>
 <script>
+
+    // 1. 獲取完整 URL
+    const url = window.location.href;
+
+    // 2. 建立 URL 物件
+    const urlObj = new URL(url);
+
+    // 3. 使用 URLSearchParams 提取參數
+    const params = urlObj.searchParams;
+
+    // 4. 取得單一參數值
+    const id = Number(params.get('id')); 
+
+    setProductDetails(id);
+    //var MenuItems = document.getElementById("MenuItems");
     
+    //MenuItems.style.maxHeight = "0px";
     
-    var MenuItems = document.getElementById("MenuItems");
-    
-    MenuItems.style.maxHeight = "0px";
-    
-    function menutoggle()
-    {
-        if(MenuItems.style.maxHeight == "0px")
-            {
-                MenuItems.style.maxHeight = "200px";
-            }else
-            {
-                MenuItems.style.maxHeight = "0px"
-            } 
-    }
+    //function menutoggle()
+    //{
+    //    if(MenuItems.style.maxHeight == "0px")
+    //        {
+    //            MenuItems.style.maxHeight = "200px";
+    //        }else
+    //        {
+    //            MenuItems.style.maxHeight = "0px"
+    //        } 
+    //}
     
 //-------------Produc Gallery------------
     
@@ -131,7 +143,6 @@
     </div>
     
 </div>
-
 
 
 
